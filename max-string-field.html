@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="max-string-field">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `max-string-field`
+     * The String field used in max platform
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MaxStringField extends Polymer.Element {
+      static get is() { return 'max-string-field'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'max-string-field'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MaxStringField.is, MaxStringField);
+  </script>
+</dom-module>
