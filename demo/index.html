@@ -14,15 +14,31 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+
       </style>
     </custom-style>
   </head>
   <body>
+
+
     <div class="vertical-section-container centered">
-      <h3>Basic max-string-field demo</h3>
       <demo-snippet>
         <template>
-          <max-string-field></max-string-field>
+        <style>
+          iron-input[invalid] > input {
+          border: 1px solid red;
+          background-color: #FFCDD2;
+          }
+        </style>
+        <max-string-field input-label="Basic max-string-field demo" type="email" placeholder="This is an email." auto-validate='true' required ='true'></max-string-field>
+        </template>
+      </demo-snippet>
+      <h4>Basic inputs</h4>
+      <demo-snippet class="centered-demo">
+        <template>
+          <max-string-field placeholder="type=date" type="date"></max-string-field>
+          <max-string-field placeholder="type=number" type="number"></max-string-field>
+          <max-string-field placeholder="disabled" disabled></max-string-field>
         </template>
       </demo-snippet>
     </div>

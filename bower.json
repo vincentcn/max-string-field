@@ -3,7 +3,8 @@
   "description": "The String field used in max platform",
   "main": "max-string-field.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
+    "polymer": "Polymer/polymer#^2.0.0",
+    "iron-input": "PolymerElements/iron-input#^2.0.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

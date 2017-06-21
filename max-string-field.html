@@ -1,5 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../polymer/iron-input.html">
+<link rel="import" href="../iron-input/iron-input.html">
 
 <dom-module id="max-string-field">
   <template>
@@ -8,9 +8,26 @@
         display: block;
       }
     </style>
-    <iron-input>
-      <input placeholder="this is placeholer" type="date">
+    <label for="nativeInput" name="test">[[inputLabel]]</label><br>
+    <iron-input bind-value="{{value}}" id="input"
+        allowed-pattern="[[allowedPattern]]"
+        auto-validate="[[autoValidate]]"
+        invalid="{{invalid}}"
+        validator="[[validator]]">
+      <input id="nativeInput"
+        disabled="[[disabled]]"
+        type="[[type]]"
+        required="[[required]]"
+        minlength="[[minlength]]"
+        maxlength="[[maxlength]]"
+        min="[[min]]"
+        max="[[max]]"
+        name="[[name]]"
+        placeholder="[[placeholder]]"
+        readonly="[[readonly]]"
+        size="[[size]]">
     </iron-input>
+
   </template>
 
   <script>
@@ -24,12 +41,145 @@
      */
     class MaxStringField extends Polymer.Element {
       static get is() { return 'max-string-field'; }
+
       static get properties() {
         return {
+          /**
+          The label for the input.
+          */
+          inputLabel: {
+            type: String
+          },
+
+          /**
+           * The value for this input. It is bound to
+           * the `<iron-input>`'s `bindValue` property in 2 way bind.
+           */
+          value: {
+            notify: true,
+            type: String
+          },
+
+          /**
+           * Returns true if the value is invalid.
+           *
+           * If `autoValidate` is true, the `invalid` attribute is managed automatically,
+           * which can clobber attempts to manage it manually.
+           */
+          invalid: {
+            type: Boolean,
+            value: true,
+            notify: true
+          },
+
+          /**
+           * Set this to specify the pattern allowed by `preventInvalidInput`.
+           */
+          allowedPattern: {
+            type: String
+          },
+
+          /**
+           * Set to true to disable this input.
+           */
+          disabled: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * The type of the input. The supported types are `text`, `number` and `password` * etc.
+           */
           type: {
             type: String,
             value: 'text'
+          },
+
+          /**
+           * Set to true to mark the input as required.
+           */
+          required: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * Set to true to auto-validate the input value.
+           */
+          autoValidate: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * Name of the validator to use. this is bound to
+           * the `<input is="iron-input">`'s `validator` property.
+           */
+          validator: {
+            type: String
+          },
+
+          /**
+           * The minimum length of the input value.
+           */
+          minlength: {
+            type: Number
+          },
+
+          /**
+           * The maximum length of the input value.
+           */
+          maxlength: {
+            type: Number
+          },
+
+          /**
+           * The minimum (numeric or date-time) input value.
+           */
+          min: {
+            type: String
+          },
+
+          /**
+           * The maximum (numeric or date-time) input value.
+           * Can be a String (e.g. `"2000-01-01"`) or a Number (e.g. `2`).
+           */
+          max: {
+            type: String
+          },
+
+          /**
+           * Limits the numeric or date-time increments.
+           */
+          step: {
+            type: String
+          },
+
+          /**
+           * A placeholder string in addition to the label. If this is set, the label will always float.
+           */
+          placeholder: {
+            type: String,
+            // need to set a default so _computeAlwaysFloatLabel is run
+            value: ''
+          },
+
+          /**
+           * If you're using PaperInputBehavior to implement your own paper-input-like
+           * element, bind this to the `<input is="iron-input">`'s `readonly` property.
+           */
+          readonly: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * bind this to the `<input is="iron-input">`'s `size` property.
+           */
+          size: {
+            type: Number
           }
+
         };
       }
 
@@ -48,10 +198,11 @@
         super.disconnectedCallback();
       }
 
-      // Called when any of the element's attributes are changed, appended, removed, or replaced,
-      attributeChangedCallback() {
-        super.attributeChangedCallback();
-      }
+      // dangeous!!!
+      // // Called when any of the element's attributes are changed, appended, removed, or replaced,
+      // attributeChangedCallback() {
+      //   super.attributeChangedCallback();
+      // }
 
       ready() {
         super.ready();
@@ -61,7 +212,6 @@
           console.log("init after firtst render...");
         });
       }
-
 
     }
 

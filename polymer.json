@@ -1,7 +1,18 @@
 {
+  "entrypoint": "demo/index.html",
+  "shell": "max-string-field.html",
+  "fragments": [],
+  "sources": [
+   "max-string-field.html",
+   "bower.json"
+  ],
+  "extraDependencies": [
+  ],
   "lint": {
-    "rules": [
-      "polymer-2"
-    ]
-  }
+    "rules": ["polymer-2-hybrid"]
+  },
+  "builds": [
+    { "preset": "es5-bundled" },
+    { "preset": "es6-unbundled" }
+  ]
 }
