@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/iron-input.html">
 
 <dom-module id="max-string-field">
   <template>
@@ -7,7 +8,9 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <iron-input>
+      <input placeholder="this is placeholer" type="date">
+    </iron-input>
   </template>
 
   <script>
@@ -23,12 +26,43 @@
       static get is() { return 'max-string-field'; }
       static get properties() {
         return {
-          prop1: {
+          type: {
             type: String,
-            value: 'max-string-field'
+            value: 'text'
           }
         };
       }
+
+      // Called when the element is upgraded (that is, when an element is created, or when a previously-created element becomes defined).
+      constructor() {
+        super();
+      }
+
+      // Called when the element is added to a document.
+      connectedCallback() {
+        super.connectedCallback();
+      }
+
+      // Called when the element is removed from a document.
+      disconnectedCallback() {
+        super.disconnectedCallback();
+      }
+
+      // Called when any of the element's attributes are changed, appended, removed, or replaced,
+      attributeChangedCallback() {
+        super.attributeChangedCallback();
+      }
+
+      ready() {
+        super.ready();
+        // When possible, use afterNextRender to defer non-critical
+        // work until after first paint.
+        Polymer.RenderStatus.afterNextRender(this, function() {
+          console.log("init after firtst render...");
+        });
+      }
+
+
     }
 
     window.customElements.define(MaxStringField.is, MaxStringField);
