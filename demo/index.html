@@ -14,31 +14,55 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+        html {
+          --form-input-width: 300px;
+        }
 
+        #demo-container {
+          display: block;
+          margin:0 auto;
+          width: 560px;
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);;
+          margin-bottom: 40px;
+          margin-top: 10px;
+          padding: 20px;
+        }
       </style>
     </custom-style>
   </head>
   <body>
 
-
+<div id="demo-container">
+  <max-string-field input-label="Text Field" auto-validate="true" placeholder="This is a string field." type="text"></max-string-field>
+  <max-string-field input-label="Number Field" auto-validate="true" required=true placeholder="This is a number field." type="Number"></max-string-field>
+  <max-string-field input-label="Email Field" auto-validate="true" required=true placeholder="This is a email field." type="Email"></max-string-field>
+  <max-string-field input-label="Date Field" auto-validate="true" placeholder="This is a date field" type="date"></max-string-field>
+  <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly></max-string-field>
+  <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled></max-string-field>
+</div>
     <div class="vertical-section-container centered">
       <demo-snippet>
         <template>
         <style>
+
           iron-input[invalid] > input {
           border: 1px solid red;
           background-color: #FFCDD2;
           }
+
         </style>
         <max-string-field input-label="Basic max-string-field demo" type="email" placeholder="This is an email." auto-validate='true' required ='true'></max-string-field>
         </template>
       </demo-snippet>
-      <h4>Basic inputs</h4>
+      <h4>Basic inputs demo</h4>
       <demo-snippet class="centered-demo">
         <template>
-          <max-string-field placeholder="type=date" type="date"></max-string-field>
-          <max-string-field placeholder="type=number" type="number"></max-string-field>
-          <max-string-field placeholder="disabled" disabled></max-string-field>
+          <max-string-field input-label="Text Field" auto-validate="true" placeholder="This is a string field." type="text"></max-string-field>
+          <max-string-field input-label="Number Field" auto-validate="true" required=true placeholder="This is a number field." type="Number"></max-string-field>
+          <max-string-field input-label="Email Field" auto-validate="true" required=true placeholder="This is a email field." type="Email"></max-string-field>
+          <max-string-field input-label="Date Field" auto-validate="true" placeholder="This is a date field" type="date"></max-string-field>
+          <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly></max-string-field>
+          <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled></max-string-field>
         </template>
       </demo-snippet>
     </div>
