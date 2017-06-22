@@ -4,7 +4,9 @@
   "main": "max-string-field.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "iron-input": "PolymerElements/iron-input#^2.0.0"
+    "iron-input": "PolymerElements/iron-input#^2.0.0",
+    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^2.0.0",
+    "iron-validator-behavior": "PolymerElements/iron-validator-behavior#^2.0.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

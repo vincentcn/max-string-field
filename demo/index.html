@@ -12,6 +12,8 @@
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../max-string-field.html">
 
+    <link rel="import" href="cats-only.html">
+
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
         html {
@@ -32,39 +34,60 @@
   </head>
   <body>
 
-<div id="demo-container">
-  <max-string-field input-label="Text Field" auto-validate="true" placeholder="This is a string field." type="text"></max-string-field>
-  <max-string-field input-label="Number Field" auto-validate="true" required=true placeholder="This is a number field." type="Number"></max-string-field>
-  <max-string-field input-label="Email Field" auto-validate="true" required=true placeholder="This is a email field." type="Email"></max-string-field>
-  <max-string-field input-label="Date Field" auto-validate="true" placeholder="This is a date field" type="date"></max-string-field>
-  <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly></max-string-field>
-  <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled></max-string-field>
-</div>
+    <div id="demo-container">
+      <max-string-field input-label="Text Field" auto-validate="true" placeholder="This is a string field." type="text"></max-string-field>
+      <max-string-field input-label="Number Field" auto-validate="true" required=true placeholder="This is a number field." type="Number"></max-string-field>
+      <max-string-field input-label="Email Field" auto-validate="true" required=true placeholder="This is a email field." type="Email"></max-string-field>
+      <max-string-field input-label="Date Field" auto-validate="true" placeholder="This is a date field" type="date"></max-string-field>
+      <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly></max-string-field>
+      <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled></max-string-field>
+    </div>
+
     <div class="vertical-section-container centered">
-      <demo-snippet>
-        <template>
-        <style>
-
-          iron-input[invalid] > input {
-          border: 1px solid red;
-          background-color: #FFCDD2;
-          }
-
-        </style>
-        <max-string-field input-label="Basic max-string-field demo" type="email" placeholder="This is an email." auto-validate='true' required ='true'></max-string-field>
-        </template>
-      </demo-snippet>
       <h4>Basic inputs demo</h4>
-      <demo-snippet class="centered-demo">
+      <demo-snippet>
         <template>
           <max-string-field input-label="Text Field" auto-validate="true" placeholder="This is a string field." type="text"></max-string-field>
           <max-string-field input-label="Number Field" auto-validate="true" required=true placeholder="This is a number field." type="Number"></max-string-field>
           <max-string-field input-label="Email Field" auto-validate="true" required=true placeholder="This is a email field." type="Email"></max-string-field>
           <max-string-field input-label="Date Field" auto-validate="true" placeholder="This is a date field" type="date"></max-string-field>
-          <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly></max-string-field>
-          <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled></max-string-field>
+          <max-string-field input-label="Readonly Field" auto-validate="true" placeholder="readonly" readonly='true'></max-string-field>
+          <max-string-field input-label="Disabled Field" auto-validate="true" placeholder="Disabled" disabled='true'></max-string-field>
+        </template>
+      </demo-snippet>
+      <h4>Data bind input demo</h4>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template>
+              <max-string-field input-label="Email Field" input-value="{{emailValue}}" auto-validate="true" placeholder="Init value" type="email" id="max-string-input"></max-string-field>
+              <p>bind to the iron-input's <code>value</code>: {{emailValue}}</p>    <button onclick="max-string-input.inputValue='pineapple'">Set bindValue to 'vincent@servicemax.com'</button>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+          <h4>Preventing invalid characters: only allow <code>!@#0123456789</code></h4>
+          <demo-snippet>
+            <template>
+              <max-string-field input-label="Customized Input" allowed-pattern="[!@#0-9]"></max-string-field>
+            </template>
+      </demo-snippet>
+      <h4>Auto-validation and preventing invalid characters</h4>
+      <demo-snippet>
+        <template>
+          <max-string-field input-label="Pattern Input Demo" allowed-pattern="[0-9]" pattern="\d{3}" placeholder="exactly 3 digits are valid">
+          </max-string-field>
+        </template>
+      </demo-snippet>
+      <h4>Validation with a custom validator</h4>
+      <demo-snippet>
+        <template>
+          <cats-only><cats-only>
+          <max-string-field type="text" input-label="Customized validator Input" placeholder="only 'cat' is valid" validator="cats-only">
+          </max-string-field>
         </template>
       </demo-snippet>
     </div>
+
   </body>
 </html>
