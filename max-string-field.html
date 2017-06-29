@@ -22,7 +22,7 @@
 
       :host iron-input > input {
         max-width: 28.26667rem;
-        height: 2em;
+        height: var(--form-input-height);
         width: var(--form-input-width);
         padding: 0 .66667rem;
         box-shadow: inset 0 0 0 1px #d8e0e5;
@@ -55,7 +55,9 @@
 
     </style>
       <div id="input-container">
-        <label for="nativeInput" id="label-for-input">[[inputLabel]]</label><br>
+        <template is="dom-if" if="{{_shouldDisplayLabel(inputLabel)}}">
+          <label for="nativeInput" id="label-for-input">[[inputLabel]]</label><br>
+        </template>
         <iron-input bind-value="{{inputValue}}" id="input"
             allowed-pattern="[[allowedPattern]]"
             auto-validate="[[autoValidate]]"
@@ -266,6 +268,10 @@
         Polymer.RenderStatus.afterNextRender(this, function() {
           console.log("init after firtst render...");
         });
+      }
+
+      _shouldDisplayLabel(label) {
+        return (typeof label === "string") && (label.trim().length > 0);
       }
 
     }

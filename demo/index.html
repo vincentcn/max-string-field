@@ -18,6 +18,7 @@
       <style is="custom-style" include="demo-pages-shared-styles">
         html {
           --form-input-width: 300px;
+          --form-input-height: 2em;
         }
 
         #demo-container {
@@ -67,11 +68,17 @@
           </dom-bind>
         </template>
       </demo-snippet>
-          <h4>Preventing invalid characters: only allow <code>!@#0123456789</code></h4>
-          <demo-snippet>
-            <template>
-              <max-string-field input-label="Customized Input" allowed-pattern="[!@#0-9]"></max-string-field>
-            </template>
+      <h4>Preventing invalid characters: only allow <code>!@#0123456789</code></h4>
+      <demo-snippet>
+        <template>
+          <max-string-field input-label="Customized Input" allowed-pattern="[!@#0-9]"></max-string-field>
+        </template>
+      </demo-snippet>
+      <h4>No label </h4>
+      <demo-snippet>
+        <template>
+          <max-string-field input-label=" " required></max-string-field>
+        </template>
       </demo-snippet>
       <h4>Auto-validation and preventing invalid characters</h4>
       <demo-snippet>
